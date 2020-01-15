@@ -17,6 +17,28 @@ li.dev-item header img {
   border-radius: 50%
 }
 
+.remove-item {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.remove-item button {
+  background: #7d40e7;
+  border-radius: 2px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  transition: background 0.5s;
+
+  display: flex;
+}
+
+.remove-item button:hover {
+  background: #6931ca;
+}
+
 .user-info {
   margin-left: 10px;
 }

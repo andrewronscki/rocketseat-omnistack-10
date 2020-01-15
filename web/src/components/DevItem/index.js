@@ -1,20 +1,32 @@
 import React from 'react';
+import { MdClose } from 'react-icons/md';
 
 import './styles.css';
 
-export default function DevItem({ dev }) {
+export default function DevItem({ dev, onDeleteForm }) {
+  const { avatar_url, name, techs, github_username, bio } = dev;
+
+  async function handleRemoveUser() {
+    await onDeleteForm({ github_username });
+  }
+
   return (
     <li className="dev-item">
+      <div className="remove-item">
+        <button type="button" onClick={() => handleRemoveUser()}>
+          <MdClose />
+        </button>
+      </div>
       <header>
-        <img src={dev.avatar_url} alt={dev.name} />
+        <img src={avatar_url} alt={name} />
         <div className="user-info">
-          <strong>{dev.name}</strong>
-          <span>{dev.techs.join(', ')}</span>
+          <strong>{name}</strong>
+          <span>{techs.join(', ')}</span>
         </div>
       </header>
 
-      <p>{dev.bio}</p>
-      <a href={`https://github.com/${dev.github_username}`}>
+      <p>{bio}</p>
+      <a href={`https://github.com/${github_username}`}>
         Acessar perfil no Github
       </a>
     </li>

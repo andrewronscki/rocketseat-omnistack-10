@@ -47,6 +47,17 @@ class DevController {
         techsArray,
         location
       );
+    } else {
+      const { _id } = dev;
+
+      dev = await updateDev(
+        _id,
+        dev.name,
+        dev.avatar_url,
+        dev.bio,
+        dev.techs,
+        dev.location
+      );
     }
 
     return res.json(dev);

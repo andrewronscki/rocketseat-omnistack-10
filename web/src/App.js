@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import api from './services/api';
 import DevItem from './components/DevItem';
 import DevForm from './components/DevForm';
+import EditDev from './components/EditDev';
 
 import './styles/global.css';
 import './styles/App.css';
-import './styles/Sidebar.css';
-import './styles/Main.css';
 
 function App() {
   const [devs, setDevs] = useState([]);
@@ -27,16 +26,45 @@ function App() {
     setDevs([...devs, response.data]);
   }
 
+  async function handleInativeDev(data) {
+    await api.put(`/devs/delete/${data.github_username}`);
+
+    const filterDevs = devs.filter(
+      dev => dev.github_username !== data.github_username
+    );
+
+    setDevs(filterDevs);
+  }
+
+  async function handleUpdateDev(data) {
+    const { github_username, techs, latitude, longitude } = data;
+    await api.put(`/devs/update/${github_username}`, {
+      techs,
+      latitude,
+      longitude,
+    });
+
+    const response = await api.get('/devs');
+
+    setDevs(response.data);
+  }
+
   return (
     <div id="app">
-      <aside>
-        <strong>Cadastrar</strong>
-        <DevForm onSubmitForm={handleAddDev} />
-      </aside>
+      <div>
+        <aside>
+          <strong>Cadastrar</strong>
+          <DevForm onSubmitForm={handleAddDev} />
+        </aside>
+        <aside>
+          <strong>Editar</strong>
+          <EditDev onUpdateForm={handleUpdateDev} />
+        </aside>
+      </div>
       <main>
         <ul>
           {devs.map(dev => (
-            <DevItem dev={dev} key={dev._id} />
+            <DevItem dev={dev} key={dev._id} onDeleteForm={handleInativeDev} />
           ))}
         </ul>
       </main>

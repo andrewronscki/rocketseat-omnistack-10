@@ -1,20 +1,45 @@
-import React from 'react';
-import logo from './assets/rocket.svg';
-import astronaut from './assets/astronaut.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import api from './services/api';
+import DevItem from './components/DevItem';
+import DevForm from './components/DevForm';
+
+import './styles/global.css';
+import './styles/App.css';
+import './styles/Sidebar.css';
+import './styles/Main.css';
 
 function App() {
+  const [devs, setDevs] = useState([]);
+
+  useEffect(() => {
+    async function loadDevs() {
+      const response = await api.get('/devs');
+
+      setDevs(response.data);
+    }
+
+    loadDevs();
+  }, []);
+
+  async function handleAddDev(data) {
+    const response = await api.post('/devs', data);
+
+    setDevs([...devs, response.data]);
+  }
+
   return (
-    <div className="App">
-      <img className="logo" src={logo} alt="Rocketseat Logo" />
-      <h2>Welcome to OmniStack!</h2>
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-        Learn React
-      </a>
-      <img className="astronaut" src={astronaut} alt="Astronaut" />
+    <div id="app">
+      <aside>
+        <strong>Cadastrar</strong>
+        <DevForm onSubmitForm={handleAddDev} />
+      </aside>
+      <main>
+        <ul>
+          {devs.map(dev => (
+            <DevItem dev={dev} key={dev._id} />
+          ))}
+        </ul>
+      </main>
     </div>
   );
 }

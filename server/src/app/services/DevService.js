@@ -2,13 +2,15 @@ import github from '../../config/github';
 import Dev from '../models/Dev';
 
 export const listDevs = async () => {
-  const devs = await Dev.find();
+  const devs = await Dev.find({
+    active: true,
+  });
 
   return devs;
 };
 
 export const validateUserName = async github_username => {
-  const dev = Dev.findOne({ github_username });
+  const dev = await Dev.findOne({ github_username });
 
   return dev;
 };
@@ -34,6 +36,28 @@ export const createDev = async (
     bio,
     techs,
     location,
+    active: true,
+  });
+
+  return dev;
+};
+
+export const updateDev = async (id, name, avatar_url, bio, techs, location) => {
+  const dev = await Dev.findByIdAndUpdate(id, {
+    name,
+    avatar_url,
+    bio,
+    techs,
+    location,
+    active: true,
+  });
+
+  return dev;
+};
+
+export const deleteDev = async id => {
+  const dev = await Dev.findByIdAndUpdate(id, {
+    active: false,
   });
 
   return dev;

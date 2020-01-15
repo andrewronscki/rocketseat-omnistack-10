@@ -11,6 +11,7 @@ const DevSchema = new Schema({
     type: PointSchema,
     index: '2dsphere',
   },
+  active: Boolean,
 });
 
 export default model('Dev', DevSchema);

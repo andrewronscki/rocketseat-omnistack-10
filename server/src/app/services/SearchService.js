@@ -14,6 +14,7 @@ const listDevsForTechAndLocation = async (latitude, longitude, techs) => {
         $maxDistance: 10000,
       },
     },
+    active: true,
   });
 
   return devs;

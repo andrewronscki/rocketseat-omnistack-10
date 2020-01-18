@@ -9644,6 +9644,11 @@ svgo@^1.0.0, svgo@^1.2.1:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+sweetalert2@^9.6.0:
+  version "9.6.0"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-9.6.0.tgz#f6bf966b86a88669dce649595588661c2c8e9ae7"
+  integrity sha512-vX2som2H4ahNbiG+HqnpVf0G+nbiJ03f6kgjgHXgYrH20Lyds4k+DEwGZU8yB2EMGqD+AYwPTKND9bqZWguCJg==
+
 symbol-observable@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"

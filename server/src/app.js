@@ -4,9 +4,11 @@ import Youch from 'youch';
 import express from 'express';
 import 'express-async-errors';
 import mongoose from 'mongoose';
+import http from 'http';
 import cors from 'cors';
 
 import routes from './routes';
+import { setupWebSocket } from './websocket';
 
 // Uncomment this line to enable database access
 // --------
@@ -24,24 +26,26 @@ mongoose.connect(
 
 class App {
   constructor() {
-    this.server = express();
+    this.app = express();
+    this.server = http.Server(this.app);
 
+    setupWebSocket(this.server);
     this.middlewares();
     this.routes();
     this.exceptionHandler();
   }
 
   middlewares() {
-    this.server.use(express.json());
-    this.server.use(cors());
+    this.app.use(express.json());
+    this.app.use(cors());
   }
 
   routes() {
-    this.server.use(routes);
+    this.app.use(routes);
   }
 
   exceptionHandler() {
-    this.server.use(async (err, req, res, next) => {
+    this.app.use(async (err, req, res, next) => {
       if (process.env.NODE_ENV === 'development') {
         const errors = await new Youch(err, req).toJSON();
 

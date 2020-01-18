@@ -24,6 +24,7 @@ li.dev-item header img {
 
 .remove-item button {
   background: #7d40e7;
+  padding: 2px;
   border-radius: 2px;
   font-size: 16px;
   font-weight: bold;
@@ -33,6 +34,29 @@ li.dev-item header img {
   transition: background 0.5s;
 
   display: flex;
+}
+
+.plus {
+  display: flex;
+  justify-content: space-between;
+}
+
+.plus button {
+  background: #7d40e7;
+  padding: 2px;
+  border-radius: 2px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  transition: background 0.5s;
+
+  display: flex;
+}
+
+.plus button:hover {
+  background: #6931ca;
 }
 
 .remove-item button:hover {
@@ -70,4 +94,12 @@ li.dev-item a {
 
 li.dev-item a:hover {
   color: #5a2ea6
+}
+
+.github-link {
+  display: flex;
+}
+
+.github-link a {
+  margin-left: 5px;
 }

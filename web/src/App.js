@@ -9,6 +9,7 @@ import './styles/App.css';
 
 function App() {
   const [devs, setDevs] = useState([]);
+  const [editForm, setEditForm] = useState(false);
 
   useEffect(() => {
     async function loadDevs() {
@@ -36,6 +37,10 @@ function App() {
     setDevs(filterDevs);
   }
 
+  async function handleEditDev(data) {
+    setEditForm(data);
+  }
+
   async function handleUpdateDev(data) {
     const { github_username, techs, latitude, longitude } = data;
     await api.put(`/devs/update/${github_username}`, {
@@ -52,19 +57,27 @@ function App() {
   return (
     <div id="app">
       <div>
-        <aside>
-          <strong>Cadastrar</strong>
-          <DevForm onSubmitForm={handleAddDev} />
-        </aside>
-        <aside>
-          <strong>Editar</strong>
-          <EditDev onUpdateForm={handleUpdateDev} />
-        </aside>
+        {!editForm ? (
+          <aside>
+            <strong>Cadastrar</strong>
+            <DevForm onSubmitForm={handleAddDev} />
+          </aside>
+        ) : (
+          <aside>
+            <strong>Editar</strong>
+            <EditDev onUpdateForm={handleUpdateDev} />
+          </aside>
+        )}
       </div>
       <main>
         <ul>
           {devs.map(dev => (
-            <DevItem dev={dev} key={dev._id} onDeleteForm={handleInativeDev} />
+            <DevItem
+              dev={dev}
+              key={dev._id}
+              onDeleteForm={handleInativeDev}
+              onEditForm={handleEditDev}
+            />
           ))}
         </ul>
       </main>

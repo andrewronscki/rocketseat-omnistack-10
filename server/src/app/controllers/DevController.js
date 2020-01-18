@@ -7,6 +7,7 @@ import {
   deleteDev,
 } from '../services/DevService';
 import parseStringAsArray from '../utils/parseStringAsArray';
+import { findConnections, sendMessage } from '../../websocket';
 
 // index: lista de coisas
 // show: mostrar um único registro
@@ -47,6 +48,13 @@ class DevController {
         techsArray,
         location
       );
+
+      const sendSocketMessageTo = findConnections(
+        { latitude, longitude },
+        techsArray
+      );
+
+      sendMessage(sendSocketMessageTo, 'new-dev', dev);
     } else {
       const { _id } = dev;
 

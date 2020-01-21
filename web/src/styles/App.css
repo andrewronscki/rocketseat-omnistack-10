@@ -25,6 +25,10 @@
   #app aside {
     width: 100%;
   }
+
+  #app div {
+    width: 100%;
+  }
 }
 
 main {
@@ -46,7 +50,7 @@ main ul {
 
 aside {
   width: 320px;
-  background: #fff;
+  background: #202124;
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
   border-radius: 2px;
   padding: 30px 20px;
@@ -56,7 +60,7 @@ aside strong {
   font-size: 20px;
   text-align: center;
   display: block;
-  color: #333
+  color: #fff
 }
 
 aside + aside {

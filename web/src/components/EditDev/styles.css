@@ -7,7 +7,7 @@ form .input-block + .input-block {
 }
 
 form .input-block label {
-  color: #ACACAC;
+  color: #fff;
   font-size: 14px;
   font-weight: bold;
   display: block;
@@ -28,16 +28,17 @@ form .input-block input {
   width: 100%;
   height: 32px;
   font-size: 14px;
-  color: #666;
+  color: #fff;
   border: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #333;
+  background: #202124;
 }
 
 form button[type=submit] {
   width: 100%;
   border: 0;
   margin-top: 30px;
-  background: #7d40e7;
+  background: #EA80FC;
   border-radius: 2px;
   padding: 15px 20px;
   font-size: 16px;
@@ -48,5 +49,5 @@ form button[type=submit] {
 }
 
 form button[type=submit]:hover {
-  background: #6931ca;
+  background: #B64FC8;
 }

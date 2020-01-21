@@ -1,5 +1,5 @@
 li.dev-item {
-  background: #fff;
+  background: #202124;
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
   border-radius: 2px;
   padding: 20px;
@@ -23,7 +23,7 @@ li.dev-item header img {
 }
 
 .remove-item button {
-  background: #7d40e7;
+  background: #EA80FC;
   padding: 2px;
   border-radius: 2px;
   font-size: 16px;
@@ -42,7 +42,7 @@ li.dev-item header img {
 }
 
 .plus button {
-  background: #7d40e7;
+  background: #EA80FC;
   padding: 2px;
   border-radius: 2px;
   font-size: 16px;
@@ -56,11 +56,11 @@ li.dev-item header img {
 }
 
 .plus button:hover {
-  background: #6931ca;
+  background: #B64FC8;
 }
 
 .remove-item button:hover {
-  background: #6931ca;
+  background: #B64FC8;
 }
 
 .user-info {
@@ -70,30 +70,30 @@ li.dev-item header img {
 .user-info strong {
   display: block;
   font-size: 16px;
-  color: #333;
+  color: #fff;
 }
 
 .user-info span {
   font-size: 13px;
-  color: #999;
+  color: #f2f2f2;
   margin-top: 2px;
 }
 
 li.dev-item p {
-  color: #666;
+  color: #fafafa;
   font-size: 14px;
   line-height: 20px;
   margin: 10px 0;
 }
 
 li.dev-item a {
-  color: #8e4dff;
+  color: #EA80FC;
   font-size: 14px;
   text-decoration: none;
 }
 
 li.dev-item a:hover {
-  color: #5a2ea6
+  color: #B64FC8
 }
 
 .github-link {

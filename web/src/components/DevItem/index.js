@@ -62,7 +62,7 @@ export default function DevItem({ dev, onDeleteForm, onEditForm }) {
       <p>{bio}</p>
       <div className="plus">
         <div className="github-link">
-          <FaGithub />
+          <FaGithub color="#fff" />
           <a href={`https://github.com/${github_username}`}>
             Acessar perfil no Github
           </a>
